@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+//import { getAnalytics } from "firebase/analytics";
 
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
@@ -18,7 +18,7 @@ export default function MyFirebaseData(props) {
         measurementId: "G-YPC04SKQ85"
     };  
     const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+    //const analytics = getAnalytics(app);
 
     useEffect(()=>{
         //setFirebaseData([{test: 'data1'}, {test: 'data2'}, {test: 'data3'}]);
