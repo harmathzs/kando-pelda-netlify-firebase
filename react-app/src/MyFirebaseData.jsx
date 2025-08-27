@@ -21,16 +21,17 @@ export default function MyFirebaseData(props) {
     //const analytics = getAnalytics(app);
 
     useEffect(()=>{
-        //setFirebaseData([{test: 'data1'}, {test: 'data2'}, {test: 'data3'}]);
-
         async function fetchData() {
             const db = getFirestore(app);
-            const docRef = doc(db, "user_credentials", "user_credential_01");
-            const docSnap = await getDoc(docRef);
+            const docRef1 = doc(db, "user_credentials", "user_credential_01");
+            const docSnap1 = await getDoc(docRef1);
+            const docRef2 = doc(db, "user_credentials", "user_credential_02");
+            const docSnap2 = await getDoc(docRef2);            
 
-            if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
-                setFirebaseData(docSnap.data());
+            if (docSnap1.exists()) {
+                const data = [docSnap1.data(), docSnap2.data()];
+                console.log("Document data:", data);
+                setFirebaseData(data);
             } else {
                 console.warn("Document not found!");
             }  
