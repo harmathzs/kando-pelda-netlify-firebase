@@ -26,7 +26,15 @@ export default function MyFirebaseData(props) {
             const docRef1 = doc(db, "user_credentials", "user_credential_01");
             const docSnap1 = await getDoc(docRef1);
             const docRef2 = doc(db, "user_credentials", "user_credential_02");
-            const docSnap2 = await getDoc(docRef2);            
+            const docSnap2 = await getDoc(docRef2);    
+            
+            /*
+                Or, get all documents of a collection:
+                
+                const colRef = collection(db, "user_credentials");
+                const snapshot = await getDocs(colRef);
+                const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            */
 
             if (docSnap1.exists()) {
                 const data = [docSnap1.data(), docSnap2.data()];
@@ -41,6 +49,9 @@ export default function MyFirebaseData(props) {
 
     return <div>
         <p>MyFirebaseData</p>
-        <p>{JSON.stringify(firebaseData)}</p>
+        {firebaseData.map(elem => <p key={elem.id}>
+            <strong> id:</strong> {elem.id}; 
+            <strong> username:</strong> {elem.username}
+        </p>)}
     </div>
 }
