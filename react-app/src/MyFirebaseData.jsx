@@ -41,6 +41,9 @@ export default function MyFirebaseData(props) {
 
     return <div>
         <p>MyFirebaseData</p>
-        <p>{JSON.stringify(firebaseData)}</p>
+        {firebaseData.map(elem => <p key={elem.id}>
+            <strong> id:</strong> {elem.id}; 
+            <strong> username:</strong> {elem.username}
+        </p>)}
     </div>
 }
