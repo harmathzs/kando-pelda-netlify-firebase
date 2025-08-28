@@ -37,9 +37,9 @@ function App() {
       </div>
       <div className='card'>
         <button onClick={async (e)=>{
-          let res = await fetch('/netlify/functions/hello-world');
+          let res = await fetch('/.netlify/functions/hello-world');
           res = await res.json();
-          setHelloRes(res.body);
+          setHelloRes(res.message);
         }}>Hello</button>
         <p>Response: {helloRes}</p>
       </div>      
