@@ -8,6 +8,8 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [helloRes, setHelloRes] = useState("");
+  const [thotRes, setThotRes] = useState("");
 
   return (
     <>
@@ -34,6 +36,22 @@ function App() {
       <div className='card'>
         <MyFirebaseData />
       </div>
+      <div className='card'>
+        <button onClick={async (e)=>{
+          let res = await fetch('/.netlify/functions/hello-world');
+          res = await res.json();
+          setHelloRes(res.message);
+        }}>Hello</button>
+        <p>Response: {helloRes}</p>
+      </div>      
+      <div className='card'>
+        <button onClick={async (e)=>{
+          let res = await fetch('/.netlify/functions/thot');
+          res = await res.json();
+          setThotRes(JSON.stringify(res.data ?? res.error));
+        }}>Thot</button>
+        <p>Response: {thotRes}</p>
+      </div>       
     </>
   )
 }
