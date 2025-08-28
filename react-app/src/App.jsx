@@ -9,6 +9,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [helloRes, setHelloRes] = useState("");
+  const [thotRes, setThotRes] = useState("");
 
   return (
     <>
@@ -47,9 +48,9 @@ function App() {
         <button onClick={async (e)=>{
           let res = await fetch('/.netlify/functions/thot');
           res = await res.json();
-          setHelloRes(JSON.stringify(res.data ?? res.error));
+          setThotRes(JSON.stringify(res.data ?? res.error));
         }}>Thot</button>
-        <p>Response: {helloRes}</p>
+        <p>Response: {thotRes}</p>
       </div>       
     </>
   )
