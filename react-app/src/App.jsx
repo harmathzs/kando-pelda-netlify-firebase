@@ -43,6 +43,14 @@ function App() {
         }}>Hello</button>
         <p>Response: {helloRes}</p>
       </div>      
+      <div className='card'>
+        <button onClick={async (e)=>{
+          let res = await fetch('/.netlify/functions/thot');
+          res = await res.json();
+          setHelloRes(res.data ?? res.error);
+        }}>Thot</button>
+        <p>Response: {helloRes}</p>
+      </div>       
     </>
   )
 }
